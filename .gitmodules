@@ -1,0 +1,3 @@
+[submodule "libs/portaudio"]
+	path = libs/portaudio
+	url = git@github.com:PortAudio/portaudio.git
