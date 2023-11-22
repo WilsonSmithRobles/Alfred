@@ -1,7 +1,8 @@
 #include <iostream>
+#include <AudioRecorder.h>
 
 int main()
 {
-    std::cout << "Hello World" << std::endl;
+    int record = sample_function();
     return 0;
 }
