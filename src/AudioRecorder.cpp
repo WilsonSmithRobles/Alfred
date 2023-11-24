@@ -65,7 +65,7 @@ int AudioRecorder::sample_function(void)
     int                 numSamples;
     int                 numBytes;
     SAMPLE              max, val;
-    double              average;
+    double              average, rms;
 
     std::cout << "Intentando adaptar c a cpp" << std::endl;
 
@@ -109,7 +109,8 @@ int AudioRecorder::sample_function(void)
         err = Pa_StartStream( stream );
         if( err != paNoError ) goto done;
 
-        while( ( err = Pa_IsStreamActive( stream ) ) == 1 ){
+        while( ( err = Pa_IsStreamActive( stream ) ) == 1 )
+        {
             Pa_Sleep(50);
         }
         
@@ -136,8 +137,12 @@ int AudioRecorder::sample_function(void)
         std::cout << "sample max amplitude = " << max << std::endl;
         std::cout << "sample average = "       << average << std::endl;
 
-        data.recordedSamples.clear();
+        rms = get_RMS_volume(data.recordedSamples);
+
+        std::cout << "RMS value obtained: " << std::to_string(rms) << std::endl;
+        
         data.frameIndex = 0;
+        i = 0;
     }
 
     /* Write recorded data to a file. */
@@ -168,4 +173,16 @@ done:
         err = 1;          /* Always return 0 or 1, but no other return codes. */
     }
     return err;
+}
+
+double AudioRecorder::get_RMS_volume(std::vector<SAMPLE> buffer){
+	double rms_amplitude = 0.0;
+	for(SAMPLE sample : buffer){
+		rms_amplitude += (double)sample * sample;
+	}
+	rms_amplitude = std::sqrt(rms_amplitude / buffer.size());
+    std::cout << "Buffer size: " << buffer.size() << std::endl;
+	
+    double volume_dB = 20.0 * std::log10(rms_amplitude);
+	return volume_dB;
 }

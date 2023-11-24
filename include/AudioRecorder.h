@@ -21,6 +21,7 @@ struct paAudioData
 #define AUDIO_RECORDER_H
 
 #include <iostream>
+#include <cmath>
 
 static int recordCallback( const void *inputBuffer, void *outputBuffer,
                         unsigned long framesPerBuffer,
@@ -40,7 +41,7 @@ public:
     int sample_function(void);
 
 private:
-
+    double get_RMS_volume(std::vector<SAMPLE> buffer);
 
 };
 
