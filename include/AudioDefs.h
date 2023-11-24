@@ -4,12 +4,12 @@
 /* #define SAMPLE_RATE  (17932) // Test failure to open with this value. */
 #define SAMPLE_RATE  (44100)    
 #define FRAMES_PER_BUFFER (512)
-#define NUM_SECONDS     (1)
+#define NUM_SECONDS_RMS     (1)
 #define NUM_CHANNELS    (1)
 /* #define DITHER_FLAG     (paDitherOff) */
 #define DITHER_FLAG     (0) /**/
-/** Set to 1 if you want to capture the recording to a file. */
-#define WRITE_TO_FILE   (0)
+
+#define DB_SOUND_THRESHOLD (35.0)
 
 /* Select sample format. */
 #if 0

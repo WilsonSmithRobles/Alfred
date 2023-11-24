@@ -10,8 +10,8 @@ extern "C" {
 
 struct paAudioData
 {
-    int                 frameIndex;  /* Index into sample array. */
-    int                 maxFrameIndex;
+    int                 frameIndex = 0;  /* Index into sample array. */
+    int                 maxFrameIndex = 0;
     std::vector<SAMPLE> recordedSamples;
 };
 
@@ -34,15 +34,10 @@ static int playCallback( const void *inputBuffer, void *outputBuffer,
                         const PaStreamCallbackTimeInfo* timeInfo,
                         PaStreamCallbackFlags statusFlags,
                         void *userData );
+                        
+std::vector<SAMPLE> sample_function(void);
 
-class AudioRecorder
-{
-public:
-    int sample_function(void);
+double get_RMS_volume(std::vector<SAMPLE> buffer);
 
-private:
-    double get_RMS_volume(std::vector<SAMPLE> buffer);
-
-};
 
 #endif // AUDIO_RECORDER_H
