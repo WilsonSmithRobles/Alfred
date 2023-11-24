@@ -3,6 +3,6 @@
 
 int main()
 {
-    int record = sample_function();
-    return 0;
+    AudioRecorder myAudioRecorder = AudioRecorder();
+    return myAudioRecorder.sample_function();
 }

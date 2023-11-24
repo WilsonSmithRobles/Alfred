@@ -4,7 +4,7 @@
 /* #define SAMPLE_RATE  (17932) // Test failure to open with this value. */
 #define SAMPLE_RATE  (44100)    
 #define FRAMES_PER_BUFFER (512)
-#define NUM_SECONDS     (5)
+#define NUM_SECONDS     (1)
 #define NUM_CHANNELS    (1)
 /* #define DITHER_FLAG     (paDitherOff) */
 #define DITHER_FLAG     (0) /**/
@@ -12,7 +12,7 @@
 #define WRITE_TO_FILE   (0)
 
 /* Select sample format. */
-#if 1
+#if 0
 #define PA_SAMPLE_TYPE  paFloat32
 typedef float SAMPLE;
 #define SAMPLE_SILENCE  (0.0f)
