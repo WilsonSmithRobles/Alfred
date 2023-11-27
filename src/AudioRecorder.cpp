@@ -118,6 +118,7 @@ std::vector<SAMPLE> sample_function(void)
         
         
         rms = get_RMS_volume(data.recordedSamples);
+        std::cout << "Rms: " << rms << std::endl;
         if(rms > DB_SOUND_THRESHOLD)
         {
             recording = true;
@@ -127,7 +128,7 @@ std::vector<SAMPLE> sample_function(void)
         {
             if(recording)
             {
-                recording_buffer.clear();
+                recording_buffer.insert(recording_buffer.end(), data.recordedSamples.begin(), data.recordedSamples.end());
                 goto done;
             }
             recording = false;

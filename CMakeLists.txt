@@ -19,8 +19,12 @@ add_executable(Alfred ${SOURCES})
 include("./PortAudio.cmake")
 target_link_libraries(Alfred PortAudio)
 
+include("./Whisper.cmake")
+target_link_libraries(Alfred whisper)
+
 target_include_directories(Alfred 
 	PRIVATE 
 		$(PROJECT_SOURCE_DIR)/include
 		$(PROJECT_SOURCE_DIR)/libs/portaudio
+		$(PROJECT_SOURCE_DIR)/libs/whisper.cpp
 )
