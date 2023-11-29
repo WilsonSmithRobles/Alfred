@@ -4,3 +4,6 @@
 [submodule "libs/whisper.cpp"]
 	path = libs/whisper.cpp
 	url = git@github.com:ggerganov/whisper.cpp.git
+[submodule "libs/llama.cpp"]
+	path = libs/llama.cpp
+	url = git@github.com:ggerganov/llama.cpp.git
